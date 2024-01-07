@@ -60,22 +60,22 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_prefix() {
+    fn test_is_prefix() {
         let tag: Tag = vec![3, 2, 0].into();
 
         let prefix: Tag = vec![3, 2, 0].into();
-        assert!(prefix.prefix(&tag));
+        assert!(prefix.is_prefix(&tag));
 
         let prefix: Tag = vec![3, 2].into();
-        assert!(prefix.prefix(&tag));
+        assert!(prefix.is_prefix(&tag));
 
         let prefix: Tag = vec![3].into();
-        assert!(prefix.prefix(&tag));
+        assert!(prefix.is_prefix(&tag));
 
         let prefix: Tag = vec![3, 1].into();
-        assert!(!prefix.prefix(&tag));
+        assert!(!prefix.is_prefix(&tag));
 
         let prefix: Tag = vec![3, 0].into();
-        assert!(!prefix.prefix(&tag));
+        assert!(!prefix.is_prefix(&tag));
     }
 }

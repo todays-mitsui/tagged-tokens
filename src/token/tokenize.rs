@@ -125,7 +125,7 @@ mod tests {
 
         let (tokens, tags) = tokenize(expr);
 
-        let range = get_range(tags.clone(), vec![2].into());
+        let range = get_range(tags.clone(), Tag::from(vec![2]));
         assert_eq!(range, Some(2..7));
         assert_eq!(
             tokens[range.unwrap()],
@@ -138,7 +138,7 @@ mod tests {
             ]
         );
 
-        let range = get_range(tags.clone(), vec![3, 1].into());
+        let range = get_range(tags.clone(), Tag::from(vec![3, 1]));
         assert_eq!(range, Some(8..11));
         assert_eq!(
             tokens[range.unwrap()],

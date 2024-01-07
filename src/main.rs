@@ -4,6 +4,7 @@ mod token;
 
 use expression::app;
 use tag::get_range;
+use tag::Tag;
 use token::tokenize;
 
 fn main() {
@@ -17,7 +18,7 @@ fn main() {
     println!("tokens: {:?}", tokens);
     println!("tags: {:?}", tags);
 
-    let range = get_range(tags, vec![3, 1].into()).unwrap();
+    let range = get_range(tags, Tag::from(vec![3, 1])).unwrap();
     println!("range: {:?}", range);
     println!("tokens[range]: {:?}", &tokens[range])
 }
