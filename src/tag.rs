@@ -19,7 +19,7 @@ impl Tag {
     }
 
     pub fn get_last(&self) -> Option<usize> {
-        self.0.last().map(|i| i.clone())
+        self.0.last().copied()
     }
 
     pub fn mutate_last<F>(&self, f: F) -> Self
@@ -71,9 +71,7 @@ pub fn get_range(tags: Vec<Tag>, tag: Tag) -> Option<Range<usize>> {
         .find(|(_, t)| prefixs.iter().any(|p| p.prefix(t)))
         .map(|(i, _)| i);
 
-    if let None = maybe_start {
-        return None;
-    }
+    maybe_start?;
 
     let start = maybe_start.unwrap();
 
@@ -85,7 +83,7 @@ pub fn get_range(tags: Vec<Tag>, tag: Tag) -> Option<Range<usize>> {
 
     let end = maybe_end.unwrap_or(tags.len());
 
-    return Some(start..end);
+    Some(start..end)
 }
 
 // ========================================================================== //

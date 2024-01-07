@@ -58,7 +58,7 @@ pub fn _tokens(expr: Expr, tag: Tag) -> (Vec<Token>, Vec<Tag>) {
         tags.push(left_tag);
         tags.append(&mut right_tags);
 
-        return (tokens, tags);
+        (tokens, tags)
     } else {
         unreachable!("left_term should be a variable")
     }
@@ -78,7 +78,7 @@ mod tests {
             app("G", "H"),
         );
         println!("expr = {:#?}", expr);
-        return expr;
+        expr
     }
 
     #[test]
