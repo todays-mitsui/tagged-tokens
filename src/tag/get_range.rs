@@ -14,20 +14,20 @@ pub fn get_range(tags: Vec<Tag>, prefix: Tag) -> Option<std::ops::Range<usize>> 
     let start: usize = tags
         .iter()
         .enumerate()
-        .find(|(_, t)| prefixes.iter().any(|p| p.prefix(t)))
+        .find(|(_, t)| prefixes.iter().any(|p| p.is_prefix(t)))
         .map(|(i, _)| i)?;
 
     let end: usize = tags
         .iter()
         .enumerate()
-        .find(|(i, t)| start < *i && !prefixes.iter().any(|p| p.prefix(t)))
+        .find(|(i, t)| start < *i && !prefixes.iter().any(|p| p.is_prefix(t)))
         .map(|(i, _)| i)?;
 
     Some(start..end)
 }
 
 impl Tag {
-    fn prefix(&self, other: &Self) -> bool {
+    fn is_prefix(&self, other: &Self) -> bool {
         let self_len = self.0.len();
         let other_len = other.0.len();
         self_len <= other_len && self.0 == &other.0[..self_len]
