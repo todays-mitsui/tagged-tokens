@@ -4,6 +4,15 @@ pub enum Expr {
     App { left: Box<Expr>, right: Box<Expr> },
 }
 
+impl Expr {
+    pub fn var_name(&self) -> &str {
+        match self {
+            Expr::Var(name) => name.as_ref(),
+            Expr::App { .. } => panic!("Expr::App has no var_name"),
+        }
+    }
+}
+
 impl From<&str> for Expr {
     fn from(name: &str) -> Self {
         Expr::Var(name.to_string())
