@@ -1,4 +1,4 @@
-import { Expr, Range, Tag, Token } from "./types.ts";
+import { Range, Tag } from "./types.ts";
 
 export function range_subexpr(tags: Array<Tag>, prefix: Tag): Range | null {
   const prefixes = gen_prefixes(prefix);
@@ -9,11 +9,12 @@ export function range_subexpr(tags: Array<Tag>, prefix: Tag): Range | null {
 
   if (start < 0) return null;
 
-  const end = tags.findIndex(
+  let end = tags.findIndex(
     (tag, i) => i > start && !prefixes.some((prefix) => is_prefix(prefix, tag)),
   );
+  end = end < 0 ? tags.length : end;
 
-  return { start, end: end < 0 ? tags.length : end };
+  return { start, end };
 }
 
 function gen_prefixes(prefix: Tag): Array<Tag> {
