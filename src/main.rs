@@ -6,6 +6,10 @@ use expression::Expr;
 use tag::Tag;
 use token::Token;
 
+fn main() {
+    println!("main");
+}
+
 pub fn tokens(expr: Expr) -> (Vec<Token>, Vec<Tag>) {
     _tokens(expr, Tag::empty())
 }

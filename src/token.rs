@@ -17,11 +17,3 @@ impl From<String> for Token {
         Token::Identifier(name)
     }
 }
-
-// ========================================================================== //
-
-#[derive(Debug, PartialEq)]
-pub struct TaggedToken {
-    pub token: Token,
-    pub tag: Tag,
-}
