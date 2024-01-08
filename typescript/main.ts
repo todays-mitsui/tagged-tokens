@@ -1,7 +1,7 @@
-import { app } from "./app.ts";
-import { range_subexpr } from "./range_subexpr.ts";
-import { tokenize } from "./tokenize.ts";
-import { Tag, Token } from "./types.ts";
+import { app } from "./src/app.ts";
+import { range_subexpr } from "./src/range_subexpr.ts";
+import { tokenize } from "./src/tokenize.ts";
+import { Tag, Token } from "./src/types.ts";
 
 // ```ABC`DEF`GH
 const expr = app(
@@ -24,7 +24,7 @@ console.info(expr);
 const [tokens, tags]: [Array<Token>, Array<Tag>] = tokenize(expr);
 
 // トークン列とタグ列の長さは等しい
-console.assert(tokens.length === tags.length);
+console.assert(tokens.length === tags.length, { tokens, tags });
 
 for (let i = 0; i < tokens.length; i++) {
   console.info(`${tokens[i]}: ${tags[i]}`);

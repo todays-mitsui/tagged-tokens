@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.211.0/testing/asserts.ts";
-import { app } from "./app.ts";
-import { tokenize } from "./tokenize.ts";
+import { app } from "../src/app.ts";
+import { tokenize } from "../src/tokenize.ts";
 
 Deno.test("tokenize", () => {
   const expr = app(

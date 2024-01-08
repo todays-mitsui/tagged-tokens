@@ -1,5 +1,5 @@
 import { assertEquals } from "https://deno.land/std@0.211.0/testing/asserts.ts";
-import { range_subexpr } from "./range_subexpr.ts";
+import { range_subexpr } from "../src/range_subexpr.ts";
 
 Deno.test("range_subexpr", () => {
   const tags = [
