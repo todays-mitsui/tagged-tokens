@@ -1,8 +1,10 @@
 import { Range, Tag } from "./types.ts";
 
-// タグ prefix から部分式の範囲を特定する
-//
-// @returns 部分式の範囲, end は範囲に含まれない (半開区間)
+/**
+ * タグ prefix から部分式の範囲を特定する
+ *
+ * @returns 部分式の範囲, end は範囲に含まれない (半開区間)
+ */
 export function range_subexpr(tags: Array<Tag>, prefix: Tag): Range | null {
   const prefixes = gen_prefixes(prefix);
 
