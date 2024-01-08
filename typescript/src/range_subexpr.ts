@@ -1,5 +1,8 @@
 import { Range, Tag } from "./types.ts";
 
+// タグ prefix から部分式の範囲を特定する
+//
+// @returns 部分式の範囲, end は範囲に含まれない (半開区間)
 export function range_subexpr(tags: Array<Tag>, prefix: Tag): Range | null {
   const prefixes = gen_prefixes(prefix);
 
@@ -17,6 +20,20 @@ export function range_subexpr(tags: Array<Tag>, prefix: Tag): Range | null {
   return { start, end };
 }
 
+/**
+ * 1つのタグを元に, 末尾のインデックスをデクリメントしたタグの配列を生成する
+ *
+ * @example
+ *   gen_prefixes([1, 4, 5])
+ *   // => [
+ *     [1, 4, 5],
+ *     [1, 4, 4],
+ *     [1, 4, 3],
+ *     [1, 4, 2],
+ *     [1, 4, 1],
+ *     [1, 4, 0],
+ *   ]
+ */
 function gen_prefixes(prefix: Tag): Array<Tag> {
   prefix = [...prefix];
   const last_index = prefix.pop();
@@ -31,6 +48,9 @@ function gen_prefixes(prefix: Tag): Array<Tag> {
   return prefixes;
 }
 
+/**
+ * prefix が tag の先頭部分に一致するかどうかを判定する
+ */
 function is_prefix(prefix: Tag, tag: Tag): boolean {
   if (prefix.length > tag.length) return false;
 
