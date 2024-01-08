@@ -1,6 +1,6 @@
 import { assertEquals } from "https://deno.land/std@0.211.0/testing/asserts.ts";
+import { app } from "./app.ts";
 import { tokenize } from "./tokenize.ts";
-import { Expr } from "./types.ts";
 
 Deno.test("tokenize", () => {
   const expr = app(
@@ -46,9 +46,3 @@ Deno.test("tokenize", () => {
     [4, 1, 0],
   ]);
 });
-
-// ========================================================================== //
-
-function app(left: Expr, right: Expr): Expr {
-  return { left, right };
-}

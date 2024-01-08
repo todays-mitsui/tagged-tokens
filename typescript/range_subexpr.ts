@@ -18,6 +18,7 @@ export function range_subexpr(tags: Array<Tag>, prefix: Tag): Range | null {
 }
 
 function gen_prefixes(prefix: Tag): Array<Tag> {
+  prefix = [...prefix];
   const last_index = prefix.pop();
 
   if (last_index == null) throw new Error("prefix is empty");
