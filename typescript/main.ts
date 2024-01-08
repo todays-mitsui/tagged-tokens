@@ -80,7 +80,7 @@ console.table(tokens.map((token, i) => {
   const tag = tags[i];
   const { start, end } = range_subexpr(tags, tag)!;
   const subexpr = tokens.slice(start, end).join("");
-  return { token, tag, start, end, subexpr};
+  return { token, tag, start, end, subexpr };
 }));
 // =>
 //   ┌───────┬───────┬─────────────┬───────┬─────┬───────────────────┐
