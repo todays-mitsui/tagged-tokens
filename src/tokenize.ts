@@ -45,7 +45,7 @@ function _tokenize(expr: Expr, tag: Tag): [Array<Token>, Array<Tag>] {
  */
 function breakdown(expr: Expr): [string, Expr[]] {
   let left_expr = expr;
-  let right_exprs: Expr[] = [];
+  const right_exprs: Expr[] = [];
 
   while (
     typeof left_expr === "object" && "left" in left_expr && "right" in left_expr
